@@ -1,0 +1,29 @@
+{
+  "name": "telegram-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js --exec babel-node",
+    "clean": "rimraf dist",
+    "build": "npm run clean && babel src -d dist",
+    "serve": "node dist/index.js",
+    "production": "npm run build && npm run serve"
+  },
+  "author": "Dmitriy Kondratenko <dmkndrtnk@gmail.com> (https://github.com/fanaticys)",
+  "license": "MIT",
+  "dependencies": {
+    "eventemitter3": "^3.0.1",
+    "mongoose": "^5.0.9",
+    "debug": "^3.1.0",
+    "node-telegram-bot-api": "^0.30.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-function-bind": "^6.22.0",
+    "dotenv": "^5.0.1",
+    "eslint": "^4.18.2",
+    "rimraf": "^2.6.2"
+  }
+}
