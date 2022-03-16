@@ -46,7 +46,7 @@ export default class Question {
       this.knowledgesModel.save({ key: chat.question, value: text }, () => {
         const botMessage = /\?$/.test(text)
           ? 'Ты ответил тоже вопросом. Я постараюсь запомнить.'
-          : 'Ок. Я постараюсь запомнить.';
+          : 'Ок';
         this.view.sendMessage(chat.id, botMessage);
       });
     });

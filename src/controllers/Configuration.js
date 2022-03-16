@@ -30,7 +30,7 @@ export default class Configuration {
       } else {
         if (/\?$/.test(text)) {
           return this.view.emit('c_question', message);
-        } else if (/^\/(\w+) (\w+)/.test(text)) {
+        } else if (/^\/(\w+)/.test(text)) {
           return this.view.emit('c_command', message);
         }
         return this.view.emit('c_message', message);

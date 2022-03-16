@@ -8,7 +8,7 @@ import knowledge from 'models/schemas/knowledge';
 import chats from 'models/schemas/chats';
 import * as controllers from 'controllers';
 
-const bot = new Bot(process.env.token, { polling: true });
+const bot = new Bot(process.env.TOKEN, { polling: true });
 const knowledgesModel = new Model('knowledges', knowledge);
 const chatsModel = new Model('chats', chats);
 new controllers.Configuration(bot, chatsModel);
