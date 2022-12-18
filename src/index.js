@@ -16,4 +16,4 @@ new controllers.Commands(bot, chatsModel);
 new controllers.Message(bot);
 new controllers.Question(bot, { knowledgesModel, chatsModel });
 
-mongoose.connect('mongodb://localhost:27017/uglybot');
+mongoose.connect(`${process.env.MONGO_URL}/uglybot`);
