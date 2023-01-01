@@ -1,3 +1,5 @@
+import { openai } from 'providers';
+
 export default class Commands {
   constructor(view, model) {
     this.view = view;
@@ -6,6 +8,7 @@ export default class Commands {
     this.registerCommand('blockMessages', this.handleBooleans);
     this.registerCommand('learn', this.handleBooleans);
     this.registerCommand('sendMessage', this.handleSendMessage);
+    this.registerCommand('dalle', this.handleDalle);
 
     view.on('c_command', this.handle);
   }
@@ -49,5 +52,20 @@ export default class Commands {
     const { text } = message;
     const [, , toChatId, messageToSend] = text.split(/(\w+) (-?\d+) (.+)/);
     return this.view.forceSendMessage(toChatId, messageToSend);
+  };
+
+  handleDalle = async message => {
+    const { chat, text } = message;
+    const [, , prompt = ''] = text.split(/^\/(\w+)/);
+
+    const response = await openai.createImage({
+      prompt: prompt.trim(),
+      n: 1,
+      size: '256x256',
+    });
+
+    const url = response.data.data[0].url;
+
+    return this.view.sendPhoto(chat.id, url);
   };
 }
